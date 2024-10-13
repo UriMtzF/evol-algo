@@ -7,7 +7,7 @@
         <link rel="preload" href="styles/style.css" as="style"></link>
         <link rel="stylesheet" href="styles/style.css"></link>
         <link rel="stylesheet" href="styles/normalize.css"></link>
-
+        <script src="scripts.js"></script>
     </head>
     <body>
         <header>
@@ -28,15 +28,16 @@
             </div>
     
             <div class="process-table">
-                <table>
-                    <tr>
-                        <th>Maximizar</th>
-                        <th>Minimizar</th>
-                    </tr>
-                    <tr>
-                        <td>{procesos}</td>
-                        <td>{procesos}</td>
-                    </tr>
+                <table id="process-table">
+                    <thead>
+                        <tr>
+                            <th>Maximizar</th>
+                            <th>Minimizar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las nuevas filas se agregarán aquí -->
+                    </tbody>
                 </table>
             </div>
         </div>
