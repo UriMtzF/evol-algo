@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<link lang="en">
+    <link>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Evolución diferencial</title>
+        <link rel="preload" href="styles/style.css" as="style"></link>
+        <link rel="stylesheet" href="styles/style.css"></link>
+        <link rel="stylesheet" href="styles/normalize.css"></link>
+
+    </head>
+    <body>
+        <header>
+            <h1>Evolución Diferencial</h1>
+        </header>
+    
+        <div class="container">
+            <div class="button-section">
+                <button id="generate-population">Generar población inicial</button>
+            </div>
+    
+            <div class="population-display">
+                <textarea id="population-text" placeholder="Text area donde muestre la población generada"></textarea>
+            </div>
+    
+            <div class="start-button">
+                <button id="start">INICIAR</button>
+            </div>
+    
+            <div class="process-table">
+                <table>
+                    <tr>
+                        <th>Maximizar</th>
+                        <th>Minimizar</th>
+                    </tr>
+                    <tr>
+                        <td>{procesos}</td>
+                        <td>{procesos}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
