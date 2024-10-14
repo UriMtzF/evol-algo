@@ -36,12 +36,16 @@ function displaySublistInTable(maximizeList, minimizeList) {
     row.appendChild(minCell);
 
     tableBody.appendChild(row)
-  };
+  }
 }
 
-// Esta función genera datos o los recibe de algún lugar
+// Función para generar la población y mostrarla
 function generatePopulationAndDisplay() {
-  fetch('http://localhost:8000/api/get-result/4')
+  // Obtener el número seleccionado del input
+  const selectedNumber = document.getElementById("number-input").value;
+
+  // Usar el número seleccionado en la URL de fetch
+  fetch(`http://localhost:8000/api/get-result/${selectedNumber}`)
     .then(response => response.json())
     .then(data => {
       const maxData = data['data']['maximize'];
