@@ -4,9 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Evolución diferencial</title>
-        <link rel="preload" href="styles/style.css" as="style">
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/normalize.css') }}">
     </head>
     <body>
         <header>
@@ -19,7 +18,7 @@
             </div>
     
             <div class="population-display">
-                <textarea id="population-text" placeholder="Text area donde muestre la población generada"></textarea>
+                <textarea id="population-text" placeholder="Text area donde muestre la población generada" readonly></textarea>
             </div>
     
             <div class="start-button">
@@ -40,6 +39,6 @@
                 </table>
             </div>
         </div>
-    <script src="js/filas.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>

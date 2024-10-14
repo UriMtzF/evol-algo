@@ -36,6 +36,10 @@ class EvolucionDiferencial:
         """
         return np.random.randint(self.bounds[0], self.bounds[1], (self.pop_size, self.dim))
 
+    # Generación de nueva población
+    def regenerate_population(self):
+        self.population = self.initialize_population()
+
     # Algoritmo de maximización
     def maximization(self, num_generations):
         generations = [self.population]
