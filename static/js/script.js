@@ -6,6 +6,7 @@ function displaySublistInTable(maximizeList, minimizeList) {
   for (let i = 0; i < maximizeList.length; i++) {
     const row = document.createElement("tr");
 
+    const genCell = document.createElement("td");
     const maxCell = document.createElement("td");
     const minCell = document.createElement("td");
 
@@ -26,9 +27,11 @@ function displaySublistInTable(maximizeList, minimizeList) {
     maxPre.textContent = maxGen;
     minPre.textContent = minGen;
 
+    genCell.textContent = i;
     maxCell.appendChild(maxPre);
     minCell.appendChild(minPre);
 
+    row.appendChild(genCell);
     row.appendChild(maxCell);
     row.appendChild(minCell);
 
