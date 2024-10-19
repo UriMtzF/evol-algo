@@ -28,13 +28,19 @@ def generate():
 
 @app.route('/api/get-result/<int:generation>', methods=['GET'])
 def get_result(generation):
-    maximize = [arr.tolist() for arr in evol_algo.maximization(generation)]
-    minimize = [arr.tolist() for arr in evol_algo.minimization(generation)]
+    maximization = evol_algo.maximization(generation)
+    minimization = evol_algo.minimization(generation)
+    maximize = [arr.tolist() for arr in maximization]
+    minimize = [arr.tolist() for arr in minimization]
+    max_fitness = evol_algo.evaluate_population(maximization)
+    min_fitness = evol_algo.evaluate_population(minimization)
     data = {
         "code": 200,
         "data": {
             "maximize": maximize,
+            "maximize_fitness": max_fitness,
             "minimize": minimize,
+            "minimize_fitness": min_fitness,
         }
     }
     return jsonify(data)

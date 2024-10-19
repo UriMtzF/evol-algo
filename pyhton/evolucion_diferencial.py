@@ -110,9 +110,12 @@ class EvolucionDiferencial:
         Evalua en la Función Objetivo la población con sus dimensiones: 
         x, y, z
         """
-        for individual in population:
-            fitness = funcion(individual[0], individual[1], individual[2])
-            fitness_values.append(fitness)
+        for vector in population:
+            fitness_vector = []
+            for item in vector:
+                fitness = funcion(item[0], item[1], item[2])
+                fitness_vector.append(fitness)
+            fitness_values.append(fitness_vector)
         return fitness_values
 
     # Evaluar un vector

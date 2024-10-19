@@ -1,5 +1,5 @@
 // Función para mostrar las sublistas en la tabla
-function displaySublistInTable(maximizeList, minimizeList) {
+function displaySublistInTable(maximizeList, maximizeFitness, minimizeList, minimizeFitness) {
   const tableBody = document.querySelector("#process-table tbody");
   tableBody.innerHTML = "";  // Limpiar contenido previo de la tabla
 
@@ -9,12 +9,18 @@ function displaySublistInTable(maximizeList, minimizeList) {
     const genCell = document.createElement("td");
     const maxCell = document.createElement("td");
     const minCell = document.createElement("td");
+    const maxFitnessCell = document.createElement("td");
+    const minFitnessCell = document.createElement("td");
 
     const maxPre = document.createElement("pre");
     const minPre = document.createElement("pre");
+    const minFitPre = document.createElement("pre");
+    const maxFitPre = document.createElement("pre");
 
     let maxGen = "";
     let minGen = "";
+    let maxFit = "";
+    let minFit = "";
 
     maximizeList[i].forEach(sublist => {
       maxGen += "[" + sublist.join(", ") + "]\n";
@@ -24,16 +30,30 @@ function displaySublistInTable(maximizeList, minimizeList) {
       minGen += "[" + sublist.join(", ") + "]\n";
     });
 
+    maximizeFitness[i].forEach(sublist => {
+        maxFit += sublist + "\n";
+    });
+
+    minimizeFitness[i].forEach(sublist => {
+        minFit += sublist + "\n";
+    });
+
     maxPre.textContent = maxGen;
     minPre.textContent = minGen;
+    maxFitPre.textContent = maxFit;
+    minFitPre.textContent = minFit;
 
     genCell.textContent = i;
     maxCell.appendChild(maxPre);
     minCell.appendChild(minPre);
+    maxFitnessCell.appendChild(maxFitPre);
+    minFitnessCell.appendChild(minFitPre);
 
     row.appendChild(genCell);
     row.appendChild(maxCell);
+    row.appendChild(maxFitnessCell);
     row.appendChild(minCell);
+    row.appendChild(minFitnessCell);
 
     tableBody.appendChild(row)
   }
@@ -49,8 +69,10 @@ function generatePopulationAndDisplay() {
     .then(response => response.json())
     .then(data => {
       const maxData = data['data']['maximize'];
+      const maxFitness = data['data']['maximize_fitness'];
       const minData = data['data']['minimize'];
-      displaySublistInTable(maxData, minData);
+      const minFitness = data['data']['minimize_fitness'];
+      displaySublistInTable(maxData, maxFitness, minData, minFitness);
     })
     .catch(error => { console.error('Error: ', error); });
 }
